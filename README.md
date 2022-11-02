@@ -11,6 +11,7 @@ npm run dist
 
 ## Publish to NPM
 ```
+npm publish --dry-run
 npm publish --access=public
 ```
 

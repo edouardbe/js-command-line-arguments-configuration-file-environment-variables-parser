@@ -1,6 +1,4 @@
 import fs from 'fs'
-import { cwd } from 'node:process';
-
 
 function commandLineArgumentsConfigurationFileEnvironmentVariablesParser(definitions, options ) {
   
@@ -83,7 +81,7 @@ function commandLineArgumentsConfigurationFileEnvironmentVariablesParser(definit
             var configuration_file = this.cfgFileArg ? this.get(this.cfgFileArg) : null
             if (configuration_file != null) {
                 if (!configuration_file.startsWith("/")) {
-                    configuration_file = `${cwd()}/${configuration_file}`
+                    configuration_file = `${process.cwd()}/${configuration_file}`
                 }
                 if(fs.existsSync(configuration_file) == false ) {
                     throw new Error(`configuration file not found: ${configuration_file}`);  
@@ -178,10 +176,15 @@ function commandLineArgumentsConfigurationFileEnvironmentVariablesParser(definit
         cast(in_value, in_type) {
             switch (in_type) {
                 case Boolean:
+                case 'boolean':
                     return in_value == "false" ? false :  new Boolean(in_value)
                 case Number:
+                case 'number':
                     return new Number(in_value)
+                case 'integer':
+                    return parseInt(in_value)
                 case String:
+                case 'string':
                     return new String(in_value).toString()
                 default:
                     return in_value

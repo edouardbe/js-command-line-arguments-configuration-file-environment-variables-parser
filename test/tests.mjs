@@ -207,9 +207,37 @@ describe('conversion types', function () {
             assert.equal(parsedArguments.get("port"), 10)
         });
     });
+    describe('integer', function () {
+        const definitions = [
+            { name: 'port', type: 'integer', defaultIfMissing: 10, desc: "port" }
+        ]
+
+        it('--port=10 should return an integer of 10 for the port', function () {
+            const options = {
+                argv: ["--port=10"],
+            };
+            var parsedArguments = commandLineArgumentsConfigurationFileEnvironmentVariablesParser(definitions, options);
+            assert.equal(parsedArguments.get("port"), 10)
+        });
+    });
     describe('String', function () {
         const definitions = [
             { name: 'path', type: String }
+        ]
+
+        it('--path=./path/file.txt should return a primitive string', function () {
+            const options = {
+                argv: ["--path=./path/file.txt"],
+            };
+            var parsedArguments = commandLineArgumentsConfigurationFileEnvironmentVariablesParser(definitions, options);
+            var path = parsedArguments.get("path");
+            assert.equal(typeof path, "string")
+            assert.equal(path, "./path/file.txt")
+        });
+    });
+    describe('string', function () {
+        const definitions = [
+            { name: 'path', type: 'string' }
         ]
 
         it('--path=./path/file.txt should return a primitive string', function () {
