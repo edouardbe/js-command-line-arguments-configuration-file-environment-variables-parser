@@ -1,0 +1,37 @@
+{
+  "name": "@edouardbe/command-line-arguments-configuration-file-environment-variables-parser",
+  "version": "0.0.1",
+  "description": "A npm package to read from a definition object how to read the arguments in the command line, or expect them in a configuration file or as environment variables",
+  "main": "dist/main.js",
+  "scripts": {
+    "test": "mocha",
+    "dist": "rollup main.mjs -f cjs -e 'lodash.camelcase' -o dist/main.js && rollup main.mjs -f esm -e 'lodash.camelcase' -o dist/main.mjs && rollup test/tests.mjs -f cjs -e 'test-runner,assert,lodash.camelcase' -o dist/tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edouardbe/command-line-arguments-configuration-file-environment-variables-parser.git"
+  },
+  "author": "edouardbe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edouardbe/command-line-arguments-configuration-file-environment-variables-parser/issues"
+  },
+  "homepage": "https://github.com/edouardbe/command-line-arguments-configuration-file-environment-variables-parser#readme",
+  "keywords": [
+    "node.js",
+    "javascript",
+    "npm",
+    "package"
+  ],
+  "dependencies": {
+    "@edouardbe/command-line-arguments-configuration-file-environment-variables-parser": "file:edouardbe-command-line-arguments-configuration-file-environment-variables-parser-0.0.1.tgz",
+    "command-line-args": "^5.2.1",
+    "express": "^4.16.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.1.0",
+    "rollup": "~1.7.4",
+    "ts-node": "^10.9.1"
+  }
+}
