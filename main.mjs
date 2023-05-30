@@ -186,6 +186,8 @@ function commandLineArgumentsConfigurationFileEnvironmentVariablesParser(definit
                 case String:
                 case 'string':
                     return new String(in_value).toString()
+                case 'csvstring':
+                    return new String(in_value).toString().split(",")
                 default:
                     return in_value
             }

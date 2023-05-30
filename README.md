@@ -4,6 +4,15 @@ A npm package to read from a definition object how to read the arguments in the 
 
 ## Get Started
 
+## test
+```
+# to isntall mocha and other dependencies
+npm install
+
+# to run the test
+npm test
+```
+
 ## create a distribution
 ```
 npm run dist

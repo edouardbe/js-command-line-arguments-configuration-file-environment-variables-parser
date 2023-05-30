@@ -250,4 +250,20 @@ describe('conversion types', function () {
             assert.equal(path, "./path/file.txt")
         });
     });
+
+    describe('csvstring', function () {
+        const definitions = [
+            { name: 'items', type: 'csvstring' }
+        ]
+
+        it('--items=a,b,c should return an array of strings', function () {
+            const options = {
+                argv: ["--items=a,b,c"],
+            };
+            var parsedArguments = commandLineArgumentsConfigurationFileEnvironmentVariablesParser(definitions, options);
+            var items = parsedArguments.get("items");
+            assert.ok(Array.isArray(items))
+            assert.equal(items[1], "b")
+        });
+    });
 });
