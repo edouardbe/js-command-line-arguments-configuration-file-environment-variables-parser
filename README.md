@@ -64,7 +64,9 @@ const options = {
 }
 
 const parsedArguments = commandLineArgumentsConfigurationFileEnvironmentVariablesParser(definitions, options);
-            
+// or if you don't want to use options
+const parsedArguments = commandLineArgumentsConfigurationFileEnvironmentVariablesParser(definitions);
+
 
 ...
 // to get the value computed

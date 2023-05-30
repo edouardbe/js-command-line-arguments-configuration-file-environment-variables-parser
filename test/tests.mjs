@@ -267,3 +267,29 @@ describe('conversion types', function () {
         });
     });
 });
+describe('no options', function () {
+    describe('all is good', function () {
+        const definitions = [
+            { name: 'port', type: Number, defaultIfMissing: 10, desc: "port" }
+        ]
+
+        it('--port=10 should return an integer of 10 for the port', function () {
+            var parsedArguments = commandLineArgumentsConfigurationFileEnvironmentVariablesParser(definitions);
+            assert.equal(parsedArguments.get("port"), 10)
+        });
+    });
+    describe('all is good', function () {
+        const definitions = [
+            { name: 'port', type: Number, required: true, desc: "port" }
+        ]
+
+        it('should return an error because the port is required', function () {
+            try {
+                var parsedArguments = commandLineArgumentsConfigurationFileEnvironmentVariablesParser(definitions);
+            } catch (error) {
+                assert.ok(error.message.indexOf("port must not be empty. Add port in the command line") > -1)
+            }
+            
+        });
+    });
+});

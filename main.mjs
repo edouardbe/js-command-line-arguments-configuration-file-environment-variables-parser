@@ -9,7 +9,7 @@ function commandLineArgumentsConfigurationFileEnvironmentVariablesParser(definit
     
     class ParsedArguments {
     
-        constructor(in_definitions,in_options) {
+        constructor(in_definitions,in_options = {}) {
             this.arguments = {};
             this.errors = [];
             this.envVarPrefix = in_options.envVarPrefix;
@@ -132,7 +132,11 @@ function commandLineArgumentsConfigurationFileEnvironmentVariablesParser(definit
         mustNotBeEmpty(in_key) {
             var value = this.get(in_key);
             if ( value == null) {
-                this.errors.push(`${in_key} must not be empty. Set ${this.toEnvVarName(in_key)} in the configuration file or environment variable or add ${in_key} in the command line`);
+                if (this.envVarPrefix !== undefined) {
+                    this.errors.push(`${in_key} must not be empty. Set ${this.toEnvVarName(in_key)} in the configuration file or environment variable or add ${in_key} in the command line`);
+                } else {
+                    this.errors.push(`${in_key} must not be empty. Add ${in_key} in the command line`);
+                }
                 return false
             }
             return true
