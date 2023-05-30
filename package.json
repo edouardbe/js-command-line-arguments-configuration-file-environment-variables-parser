@@ -1,6 +1,6 @@
 {
   "name": "@edouardbe/command-line-arguments-configuration-file-environment-variables-parser",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A npm package to read from a definition object how to read the arguments in the command line, or expect them in a configuration file or as environment variables",
   "main": "dist/main.js",
   "scripts": {
